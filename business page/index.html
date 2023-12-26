@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Automated Foliage</title>
+
+    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("L5qYNfb60mNXDGI7i"); 
+        })();
+    </script>
+    
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="top-bar-container">
+        <a href="#about" class="top-bar-link">About</a>
+        <a href="#contact" class="top-bar-link">Contact Us</a>
+    </div>
+</div>
+
+<div class="hero" id="hero">
+    <div class="hero-text">
+        <img src="img/Image (1).jpeg" alt="Automated Foliage" class="logo"> 
+        <h1>Welcome to Automated Foliage</h1>
+        <p>Leading the Way in Automated Greenhouse Technology</p>
+    </div>
+</div>
+
+<section id="about">
+    <div class="container">
+        <h2>About Automated Foliage</h2>
+        <p>Discover more about our innovative solutions in automated greenhouse technology. We are dedicated to providing cutting-edge technology for efficient and sustainable greenhouse management.</p>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="container">
+        <h2>Contact Us</h2>
+        <p>Get in touch for more information or to discuss your greenhouse needs. We are here to help.</p>
+        <form id="contact-form" class="contact-form">
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <textarea id="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+</section>
+
+<script type="text/javascript">
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        emailjs.send("service_1sjwwft", "template_z57ored", {
+            "from_name": document.getElementById('name').value,
+            "from_email": document.getElementById('email').value,
+            "message_html": document.getElementById('message').value
+        })
+        .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            alert('Email sent successfully!');
+        }, function(error) {
+            console.log('FAILED...', error);
+            alert('Failed to send email.');
+        });
+    });
+</script>
+
+</body>
+</html>
